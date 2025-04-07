@@ -1,46 +1,6 @@
 [
   {
-    "team": "PHI",
-    "predicted_win": 0,
-    "confidence": "89.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "PHX",
-    "predicted_win": 0,
-    "confidence": "57.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "MEM",
-    "predicted_win": 0,
-    "confidence": "88.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "CLE",
-    "predicted_win": 1,
-    "confidence": "92.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "DET",
-    "predicted_win": 0,
-    "confidence": "91.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "ATL",
+    "team": "DAL",
     "predicted_win": 1,
     "confidence": "76.0%",
     "moneyline": NaN,
@@ -48,49 +8,25 @@
     "edge": null
   },
   {
-    "team": "NYK",
+    "team": "IND",
     "predicted_win": 1,
-    "confidence": "89.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "GSW",
-    "predicted_win": 1,
-    "confidence": "86.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "UTA",
-    "predicted_win": 0,
-    "confidence": "90.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "BKN",
-    "predicted_win": 0,
-    "confidence": "58.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "CHI",
-    "predicted_win": 1,
-    "confidence": "81.0%",
+    "confidence": "78.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
   },
   {
     "team": "NOP",
+    "predicted_win": 0,
+    "confidence": "93.0%",
+    "moneyline": NaN,
+    "implied_prob": null,
+    "edge": null
+  },
+  {
+    "team": "CLE",
     "predicted_win": 1,
-    "confidence": "94.0%",
+    "confidence": "74.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
@@ -98,15 +34,23 @@
   {
     "team": "HOU",
     "predicted_win": 1,
-    "confidence": "55.0%",
+    "confidence": "90.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
   },
   {
-    "team": "IND",
+    "team": "DEN",
     "predicted_win": 0,
-    "confidence": "94.0%",
+    "confidence": "84.0%",
+    "moneyline": NaN,
+    "implied_prob": null,
+    "edge": null
+  },
+  {
+    "team": "SAC",
+    "predicted_win": 0,
+    "confidence": "90.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
@@ -114,47 +58,87 @@
   {
     "team": "CHA",
     "predicted_win": 0,
-    "confidence": "81.0%",
+    "confidence": "90.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
   },
   {
-    "team": "ORL",
+    "team": "SAS",
     "predicted_win": 1,
-    "confidence": "98.0%",
+    "confidence": "72.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
   },
   {
-    "team": "LAL",
+    "team": "UTA",
+    "predicted_win": 0,
+    "confidence": "96.0%",
+    "moneyline": NaN,
+    "implied_prob": null,
+    "edge": null
+  },
+  {
+    "team": "MIA",
     "predicted_win": 1,
-    "confidence": "89.0%",
+    "confidence": "77.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
   },
   {
-    "team": "POR",
-    "predicted_win": 0,
-    "confidence": "94.0%",
+    "team": "WAS",
+    "predicted_win": 1,
+    "confidence": "67.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
   },
   {
-    "team": "MIL",
-    "predicted_win": 0,
+    "team": "LAC",
+    "predicted_win": 1,
     "confidence": "91.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
   },
   {
-    "team": "TOR",
+    "team": "BOS",
+    "predicted_win": 0,
+    "confidence": "72.0%",
+    "moneyline": NaN,
+    "implied_prob": null,
+    "edge": null
+  },
+  {
+    "team": "OKC",
     "predicted_win": 1,
-    "confidence": "66.0%",
+    "confidence": "95.0%",
+    "moneyline": NaN,
+    "implied_prob": null,
+    "edge": null
+  },
+  {
+    "team": "ATL",
+    "predicted_win": 0,
+    "confidence": "83.0%",
+    "moneyline": NaN,
+    "implied_prob": null,
+    "edge": null
+  },
+  {
+    "team": "DET",
+    "predicted_win": 0,
+    "confidence": "78.0%",
+    "moneyline": NaN,
+    "implied_prob": null,
+    "edge": null
+  },
+  {
+    "team": "NYK",
+    "predicted_win": 0,
+    "confidence": "81.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
