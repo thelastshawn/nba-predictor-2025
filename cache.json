@@ -1,8 +1,8 @@
 [
   {
-    "team": "DAL",
-    "predicted_win": 1,
-    "confidence": "76.0%",
+    "team": "UTA",
+    "predicted_win": 0,
+    "confidence": "96.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
@@ -16,33 +16,9 @@
     "edge": null
   },
   {
-    "team": "NOP",
-    "predicted_win": 0,
-    "confidence": "93.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "CLE",
+    "team": "SAS",
     "predicted_win": 1,
-    "confidence": "74.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "HOU",
-    "predicted_win": 1,
-    "confidence": "90.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "DEN",
-    "predicted_win": 0,
-    "confidence": "84.0%",
+    "confidence": "72.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
@@ -56,41 +32,25 @@
     "edge": null
   },
   {
+    "team": "DAL",
+    "predicted_win": 1,
+    "confidence": "76.0%",
+    "moneyline": NaN,
+    "implied_prob": null,
+    "edge": null
+  },
+  {
+    "team": "DET",
+    "predicted_win": 0,
+    "confidence": "78.0%",
+    "moneyline": NaN,
+    "implied_prob": null,
+    "edge": null
+  },
+  {
     "team": "CHA",
     "predicted_win": 0,
     "confidence": "90.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "SAS",
-    "predicted_win": 1,
-    "confidence": "72.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "UTA",
-    "predicted_win": 0,
-    "confidence": "96.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "MIA",
-    "predicted_win": 1,
-    "confidence": "77.0%",
-    "moneyline": NaN,
-    "implied_prob": null,
-    "edge": null
-  },
-  {
-    "team": "WAS",
-    "predicted_win": 1,
-    "confidence": "67.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
@@ -104,9 +64,9 @@
     "edge": null
   },
   {
-    "team": "BOS",
+    "team": "NOP",
     "predicted_win": 0,
-    "confidence": "72.0%",
+    "confidence": "93.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
@@ -128,9 +88,17 @@
     "edge": null
   },
   {
-    "team": "DET",
+    "team": "BOS",
     "predicted_win": 0,
-    "confidence": "78.0%",
+    "confidence": "72.0%",
+    "moneyline": NaN,
+    "implied_prob": null,
+    "edge": null
+  },
+  {
+    "team": "CLE",
+    "predicted_win": 1,
+    "confidence": "74.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
@@ -139,6 +107,38 @@
     "team": "NYK",
     "predicted_win": 0,
     "confidence": "81.0%",
+    "moneyline": NaN,
+    "implied_prob": null,
+    "edge": null
+  },
+  {
+    "team": "DEN",
+    "predicted_win": 0,
+    "confidence": "84.0%",
+    "moneyline": NaN,
+    "implied_prob": null,
+    "edge": null
+  },
+  {
+    "team": "HOU",
+    "predicted_win": 1,
+    "confidence": "90.0%",
+    "moneyline": NaN,
+    "implied_prob": null,
+    "edge": null
+  },
+  {
+    "team": "MIA",
+    "predicted_win": 1,
+    "confidence": "77.0%",
+    "moneyline": NaN,
+    "implied_prob": null,
+    "edge": null
+  },
+  {
+    "team": "WAS",
+    "predicted_win": 1,
+    "confidence": "67.0%",
     "moneyline": NaN,
     "implied_prob": null,
     "edge": null
