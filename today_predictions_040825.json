@@ -1,0 +1,50 @@
+[
+  {
+    "TEAM_ABBREVIATION": "ATL",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "57.0%"
+  },
+  {
+    "TEAM_ABBREVIATION": "CHA",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "57.0%"
+  },
+  {
+    "TEAM_ABBREVIATION": "CHI",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "57.0%"
+  },
+  {
+    "TEAM_ABBREVIATION": "CLE",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "57.0%"
+  },
+  {
+    "TEAM_ABBREVIATION": "IND",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "57.0%"
+  },
+  {
+    "TEAM_ABBREVIATION": "MEM",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "57.0%"
+  },
+  {
+    "TEAM_ABBREVIATION": "ORL",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "57.0%"
+  },
+  {
+    "TEAM_ABBREVIATION": "WAS",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "57.0%"
+  }
+]
