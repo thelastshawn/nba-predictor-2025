@@ -76,4 +76,3 @@ elif tab == "AI Prompter":
     st.markdown("### 🤖 AI Assistant")
     st.text_area("Ask me anything about NBA stats, teams, or predictions:", placeholder="e.g. What’s the Lakers’ record vs Warriors in their last 10 meetings?")
     st.button("Submit", help="Coming soon: Add OpenAI/GPT response integration.")
-
