@@ -48,7 +48,8 @@ if tab == "Moneyline Predictions":
         df_filtered = df_filtered[df_filtered['Edge'].str.rstrip('%').astype(float) >= min_edge]
 
         st.markdown(f"### 🗓️ Moneyline Predictions for {datetime.today().strftime('%B %d, %Y')}")
-        st.dataframe(df_filtered.reset_index(drop=True), use_contaiuse_container_width=True)
+        st.dataframe(df_filtered.reset_index(drop=True), use_container_width=True)
+        st.success(f"{len(df_filtered)} teams meet your filter criteria ✅")
 
 # Spread Predictions Tab
 elif tab == "Spread Predictions":
@@ -75,3 +76,4 @@ elif tab == "AI Prompter":
     st.markdown("### 🤖 AI Assistant")
     st.text_area("Ask me anything about NBA stats, teams, or predictions:", placeholder="e.g. What’s the Lakers’ record vs Warriors in their last 10 meetings?")
     st.button("Submit", help="Coming soon: Add OpenAI/GPT response integration.")
+
