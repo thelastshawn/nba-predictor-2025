@@ -8,11 +8,11 @@ st.title("🏀 NBA AI Prediction Dashboard")
 
 # Load prediction data from cache
 try:
-    with open("cache.json", "r") as f:
+    with open("today_predictions_040825.json", "r") as f:
         data = json.load(f)
     df = pd.DataFrame(data)
 except FileNotFoundError:
-    st.error("❌ cache.json not found. Run generate_predictions.py first.")
+    st.error("❌ WTF?! Slight ERROR")
     st.stop()
 
 # Format columns if available
