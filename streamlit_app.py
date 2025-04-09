@@ -3,76 +3,58 @@ import pandas as pd
 import json
 from datetime import datetime
 
-st.set_page_config(page_title="NBA Predictions", layout="wide")
-st.title("🏀 NBA AI Prediction Dashboard")
+st.set_page_config(page_title="NBA AI Dashboard", layout="wide")
+st.title("🏀 NBA Daily Prediction Dashboard")
 
-# Load prediction data from cache
-try:
-    with open("today_predictions_040825.json", "r") as f:
-        data = json.load(f)
-    df = pd.DataFrame(data)
-except FileNotFoundError:
-    st.error("❌ WTF?! Slight ERROR")
-    st.stop()
+# ---------- Tabs ----------
+tabs = st.tabs(["Moneyline", "Spreads", "Totals (O/U)", "Player Props", "AI Prompter"])
 
-# Format columns if available
-if not df.empty:
-    df['Predicted Win'] = df['predicted_win'].map({1: "✅ Win", 0: "❌ Loss"})
-    df['Confidence'] = df['confidence']
-    df['Moneyline'] = df['moneyline']
-    df['Implied Prob'] = df['implied_prob']
-    df['Edge'] = df['edge']
+# ---------- Tab 1: Moneyline ----------
+with tabs[0]:
+    st.header("💵 Moneyline Predictions")
+    try:
+        with open("today_predictions.json", "r") as f:
+            moneyline_data = json.load(f)
+        df_ml = pd.DataFrame(moneyline_data)
+    except FileNotFoundError:
+        st.error("❌ today_predictions.json not found.")
+        df_ml = pd.DataFrame()
 
-# Sidebar Navigation
-st.sidebar.title("📊 Navigation")
-tab = st.sidebar.radio("Select a View", [
-    "Moneyline Predictions",
-    "Spread Predictions",
-    "Totals O/U Predictions",
-    "Player Prop Predictions",
-    "Team & Player Research",
-    "AI Prompter"
-])
+    if not df_ml.empty:
+        df_ml["Predicted Win"] = df_ml["Predicted Win"].map({1: "✅ Win", 0: "❌ Loss"})
+        df_ml["Confidence"] = df_ml["Confidence"].str.replace("%", "").astype(float)
+        
+        st.sidebar.subheader("🔍 Moneyline Filters")
+        min_conf = st.sidebar.slider("Min Confidence %", 50.0, 100.0, 60.0)
+        team_filter = st.sidebar.multiselect("Filter by Team", df_ml["Team"].unique(), default=df_ml["Team"].unique())
 
-# Moneyline Tab
-if tab == "Moneyline Predictions":
-    if not df.empty:
-        df_ml = df[['team', 'Predicted Win', 'Confidence', 'Moneyline', 'Implied Prob', 'Edge']]
-        st.sidebar.header("🔍 Filters")
-        min_conf = st.sidebar.slider("Minimum Confidence %", 50.0, 100.0, 60.0)
-        min_edge = st.sidebar.slider("Minimum Edge %", -20.0, 20.0, 0.0)
-        team_filter = st.sidebar.multiselect("Filter by Team", df_ml['team'].unique(), default=df_ml['team'].unique())
+        df_filtered = df_ml[df_ml["Team"].isin(team_filter)]
+        df_filtered = df_filtered[df_filtered["Confidence"] >= min_conf]
 
-        df_filtered = df_ml[df_ml['team'].isin(team_filter)]
-        df_filtered = df_filtered[df_filtered['Confidence'].str.rstrip('%').astype(float) >= min_conf]
-        df_filtered = df_filtered[df_filtered['Edge'].str.rstrip('%').astype(float) >= min_edge]
-
-        st.markdown(f"### 🗓️ Moneyline Predictions for {datetime.today().strftime('%B %d, %Y')}")
         st.dataframe(df_filtered.reset_index(drop=True), use_container_width=True)
         st.success(f"{len(df_filtered)} teams meet your filter criteria ✅")
+    else:
+        st.warning("No moneyline predictions available.")
 
-# Spread Predictions Tab
-elif tab == "Spread Predictions":
-    st.markdown("### 📏 Spread Predictions")
-    st.info("This section will show AI spread predictions. Integrate your spread_model.pkl + live spreads here.")
+# ---------- Tab 2: Spread Predictions ----------
+with tabs[1]:
+    st.header("📏 Spread Predictions")
+    st.info("Coming soon! Upload `today_spreads.json` to activate this tab.")
 
-# Totals Predictions Tab
-elif tab == "Totals O/U Predictions":
-    st.markdown("### 📊 Over/Under Totals Predictions")
-    st.info("This section will display AI total points predictions (O/U). Integrate totals_model.pkl and daily odds.")
+# ---------- Tab 3: Totals (O/U) Predictions ----------
+with tabs[2]:
+    st.header("📊 Totals (Over/Under)")
+    st.info("Coming soon! Upload `today_totals.json` to activate this tab.")
 
-# Player Props Tab
-elif tab == "Player Prop Predictions":
-    st.markdown("### 👤 Player Prop Predictions")
-    st.warning("Coming soon! Will support points, assists, rebounds, etc.")
+# ---------- Tab 4: Player Props ----------
+with tabs[3]:
+    st.header("🎯 Player Prop Predictions")
+    st.info("Coming soon! Upload `today_props.json` to activate this tab.")
 
-# Research Tool Tab
-elif tab == "Team & Player Research":
-    st.markdown("### 🔍 NBA Team & Player Research Tool")
-    st.info("Use this to explore rolling 10-game stats, team matchups, and H2H data. Integrate pre-processed stats here.")
-
-# AI Prompter Tab
-elif tab == "AI Prompter":
-    st.markdown("### 🤖 AI Assistant")
-    st.text_area("Ask me anything about NBA stats, teams, or predictions:", placeholder="e.g. What’s the Lakers’ record vs Warriors in their last 10 meetings?")
-    st.button("Submit", help="Coming soon: Add OpenAI/GPT response integration.")
+# ---------- Tab 5: AI Prompter ----------
+with tabs[4]:
+    st.header("🧠 AI Prompter")
+    st.write("Use natural language to ask about NBA matchups, team stats, trends, etc.")
+    prompt = st.text_area("Ask anything about NBA stats or games...")
+    if st.button("Generate Insights"):
+        st.info("💡 AI response feature coming soon.")
