@@ -1,0 +1,80 @@
+[
+  {
+    "Team": "Atlanta Hawks",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 0,
+    "Confidence": "92.0%"
+  },
+  {
+    "Team": "Boston Celtics",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "72.5%"
+  },
+  {
+    "Team": "New Orleans Pelicans",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 0,
+    "Confidence": "73.5%"
+  },
+  {
+    "Team": "Golden State Warriors",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "87.5%"
+  },
+  {
+    "Team": "Los Angeles Lakers",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 0,
+    "Confidence": "53.0%"
+  },
+  {
+    "Team": "Milwaukee Bucks",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "71.0%"
+  },
+  {
+    "Team": "Minnesota Timberwolves",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "76.5%"
+  },
+  {
+    "Team": "Brooklyn Nets",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "80.5%"
+  },
+  {
+    "Team": "New York Knicks",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 0,
+    "Confidence": "69.5%"
+  },
+  {
+    "Team": "Orlando Magic",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "93.0%"
+  },
+  {
+    "Team": "Phoenix Suns",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 0,
+    "Confidence": "75.0%"
+  },
+  {
+    "Team": "San Antonio Spurs",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "80.0%"
+  },
+  {
+    "Team": "Oklahoma City Thunder",
+    "GAME_DATE": "2025-04-08",
+    "Predicted Win": 1,
+    "Confidence": "70.0%"
+  }
+]
