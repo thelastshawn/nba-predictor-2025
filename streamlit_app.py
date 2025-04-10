@@ -59,7 +59,42 @@ with props_tab:
 # --- Research Tab ---
 with research_tab:
     st.header("Team/Player Rolling Averages & H2H Lookup")
-    st.info("This section will include filters and stats for any team or player.")
+    st.info("This section includes filters and stats for any team or player.")
+
+    # Load cleaned logs
+    player_logs = pd.read_csv("player_logs.csv")
+    team_logs = pd.read_csv("team_logs_cleaned.csv")
+
+    tab_option = st.radio("Select Data Type", ["Player Research", "Team Research"])
+
+    if tab_option == "Player Research":
+        selected_player = st.selectbox("Choose Player", sorted(player_logs["PLAYER_NAME"].unique()))
+        rolling_window = st.selectbox("Rolling Average (Games)", [5, 10, 20])
+        player_df = player_logs[player_logs["PLAYER_NAME"] == selected_player].copy()
+        player_df = player_df.sort_values("GAME_DATE")
+
+        # Rolling stats
+        player_df["PTS_avg"] = player_df["PTS"].rolling(rolling_window).mean()
+        player_df["REB_avg"] = player_df["REB"].rolling(rolling_window).mean()
+        player_df["AST_avg"] = player_df["AST"].rolling(rolling_window).mean()
+
+        st.subheader(f"{selected_player} - Last {rolling_window} Games")
+        st.dataframe(player_df[["GAME_DATE", "MATCHUP", "PTS", "REB", "AST", "PTS_avg", "REB_avg", "AST_avg"]].tail(20))
+
+    elif tab_option == "Team Research":
+        selected_team = st.selectbox("Choose Team", sorted(team_logs["TEAM_NAME"].unique()))
+        rolling_window = st.selectbox("Rolling Average (Games)", [5, 10, 20])
+        team_df = team_logs[team_logs["TEAM_NAME"] == selected_team].copy()
+        team_df = team_df.sort_values("GAME_DATE")
+
+        # Rolling stats
+        team_df["PTS_avg"] = team_df["PTS"].rolling(rolling_window).mean()
+        team_df["REB_avg"] = team_df["REB"].rolling(rolling_window).mean()
+        team_df["AST_avg"] = team_df["AST"].rolling(rolling_window).mean()
+        team_df["OPP_PTS_avg"] = team_df["OPP_PTS"].rolling(rolling_window).mean()
+
+        st.subheader(f"{selected_team} - Last {rolling_window} Games")
+        st.dataframe(team_df[["GAME_DATE", "MATCHUP", "PTS", "REB", "AST", "OPP_PTS", "PTS_avg", "REB_avg", "AST_avg", "OPP_PTS_avg"]].tail(20))
 
 # --- AI Prompter ---
 with ai_tab:
