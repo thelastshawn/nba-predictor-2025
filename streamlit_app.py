@@ -108,8 +108,6 @@ with research_tab:
             st.subheader(f"Last {rolling_window} Games for {selected_team}")
             st.dataframe(filtered_logs[["GAME_DATE", "MATCHUP", "PTS", "REB", "AST", "PLUS_MINUS"]].reset_index(drop=True))
 
-
-
 # --- AI Prompter ---
 with ai_tab:
     st.header("Ask AI Anything About NBA Stats")
