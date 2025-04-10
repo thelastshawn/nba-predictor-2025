@@ -63,7 +63,7 @@ with research_tab:
 
     # Load cleaned logs
     player_logs = pd.read_csv("player_logs.csv")
-    team_logs = pd.read_csv("team_logs_cleaned.csv")
+    team_logs = pd.read_csv("team_logs.csv")
 
     tab_option = st.radio("Select Data Type", ["Player Research", "Team Research"])
 
