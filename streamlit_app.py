@@ -74,22 +74,26 @@ with research_tab:
     rolling_window = st.selectbox("Rolling Window (Games)", [5, 10, 20])
 
     if data_type == "Player":
+        # Team > Player selection
         available_teams = sorted(player_logs["TEAM_ABBREVIATION"].dropna().unique())
         selected_team = st.selectbox("Select Team", available_teams)
 
         filtered_players = player_logs[player_logs["TEAM_ABBREVIATION"] == selected_team]["PLAYER_NAME"].dropna().unique()
         selected_player = st.selectbox("Select Player", sorted(filtered_players))
 
-        filtered_logs = player_logs[(player_logs["PLAYER_NAME"] == selected_player)].sort_values("GAME_DATE", ascending=False).head(rolling_window)
+        # Filter and sort player logs
+        filtered_logs = player_logs[player_logs["PLAYER_NAME"] == selected_player]
+        filtered_logs = filtered_logs.sort_values("GAME_DATE", ascending=False).head(rolling_window)
 
         st.subheader(f"Last {rolling_window} Games for {selected_player}")
         st.dataframe(filtered_logs[["GAME_DATE", "MATCHUP", "PTS", "REB", "AST", "PLUS_MINUS"]].reset_index(drop=True))
 
-    else:
-        available_teams = sorted(team_logs["TEAM_NAME"].dropna().unique())
+    elif data_type == "Team":
+        available_teams = sorted(team_logs["TEAM_ABBREVIATION"].dropna().unique())
         selected_team = st.selectbox("Select Team", available_teams)
 
-        filtered_logs = team_logs[(team_logs["TEAM_NAME"] == selected_team)].sort_values("GAME_DATE", ascending=False).head(rolling_window)
+        filtered_logs = team_logs[team_logs["TEAM_ABBREVIATION"] == selected_team]
+        filtered_logs = filtered_logs.sort_values("GAME_DATE", ascending=False).head(rolling_window)
 
         st.subheader(f"Last {rolling_window} Games for {selected_team}")
         st.dataframe(filtered_logs[["GAME_DATE", "MATCHUP", "PTS", "REB", "AST", "PLUS_MINUS"]].reset_index(drop=True))
