@@ -59,42 +59,40 @@ with props_tab:
 # --- Research Tab ---
 with research_tab:
     st.header("Team/Player Rolling Averages & H2H Lookup")
-    st.info("This section includes filters and stats for any team or player.")
+    st.info("Use this tool to explore player and team performance, including rolling stats and head-to-head history.")
 
-    # Load cleaned logs
+    # Load logs
     player_logs = pd.read_csv("player_logs.csv")
     team_logs = pd.read_csv("team_logs.csv")
 
-    tab_option = st.radio("Select Data Type", ["Player Research", "Team Research"])
+    # Format date
+    player_logs["GAME_DATE"] = pd.to_datetime(player_logs["GAME_DATE"])
+    team_logs["GAME_DATE"] = pd.to_datetime(team_logs["GAME_DATE"])
 
-    if tab_option == "Player Research":
-        selected_player = st.selectbox("Choose Player", sorted(player_logs["PLAYER_NAME"].unique()))
-        rolling_window = st.selectbox("Rolling Average (Games)", [5, 10, 20])
-        player_df = player_logs[player_logs["PLAYER_NAME"] == selected_player].copy()
-        player_df = player_df.sort_values("GAME_DATE")
+    # Create filters
+    data_type = st.selectbox("Select Data Type", ["Player", "Team"])
+    rolling_window = st.selectbox("Rolling Window (Games)", [5, 10, 20])
 
-        # Rolling stats
-        player_df["PTS_avg"] = player_df["PTS"].rolling(rolling_window).mean()
-        player_df["REB_avg"] = player_df["REB"].rolling(rolling_window).mean()
-        player_df["AST_avg"] = player_df["AST"].rolling(rolling_window).mean()
+    if data_type == "Player":
+        available_teams = sorted(player_logs["TEAM_ABBREVIATION"].dropna().unique())
+        selected_team = st.selectbox("Select Team", available_teams)
 
-        st.subheader(f"{selected_player} - Last {rolling_window} Games")
-        st.dataframe(player_df[["GAME_DATE", "MATCHUP", "PTS", "REB", "AST", "PTS_avg", "REB_avg", "AST_avg"]].tail(20))
+        filtered_players = player_logs[player_logs["TEAM_ABBREVIATION"] == selected_team]["PLAYER_NAME"].dropna().unique()
+        selected_player = st.selectbox("Select Player", sorted(filtered_players))
 
-    elif tab_option == "Team Research":
-        selected_team = st.selectbox("Choose Team", sorted(team_logs["TEAM_NAME"].unique()))
-        rolling_window = st.selectbox("Rolling Average (Games)", [5, 10, 20])
-        team_df = team_logs[team_logs["TEAM_NAME"] == selected_team].copy()
-        team_df = team_df.sort_values("GAME_DATE")
+        filtered_logs = player_logs[(player_logs["PLAYER_NAME"] == selected_player)].sort_values("GAME_DATE", ascending=False).head(rolling_window)
 
-        # Rolling stats
-        team_df["PTS_avg"] = team_df["PTS"].rolling(rolling_window).mean()
-        team_df["REB_avg"] = team_df["REB"].rolling(rolling_window).mean()
-        team_df["AST_avg"] = team_df["AST"].rolling(rolling_window).mean()
-        team_df["OPP_PTS_avg"] = team_df["OPP_PTS"].rolling(rolling_window).mean()
+        st.subheader(f"Last {rolling_window} Games for {selected_player}")
+        st.dataframe(filtered_logs[["GAME_DATE", "MATCHUP", "PTS", "REB", "AST", "PLUS_MINUS"]].reset_index(drop=True))
 
-        st.subheader(f"{selected_team} - Last {rolling_window} Games")
-        st.dataframe(team_df[["GAME_DATE", "MATCHUP", "PTS", "REB", "AST", "OPP_PTS", "PTS_avg", "REB_avg", "AST_avg", "OPP_PTS_avg"]].tail(20))
+    else:
+        available_teams = sorted(team_logs["TEAM_NAME"].dropna().unique())
+        selected_team = st.selectbox("Select Team", available_teams)
+
+        filtered_logs = team_logs[(team_logs["TEAM_NAME"] == selected_team)].sort_values("GAME_DATE", ascending=False).head(rolling_window)
+
+        st.subheader(f"Last {rolling_window} Games for {selected_team}")
+        st.dataframe(filtered_logs[["GAME_DATE", "MATCHUP", "PTS", "REB", "AST", "PLUS_MINUS"]].reset_index(drop=True))
 
 # --- AI Prompter ---
 with ai_tab:
