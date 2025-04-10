@@ -65,43 +65,49 @@ with research_tab:
     player_logs = pd.read_csv("player_logs.csv")
     team_logs = pd.read_csv("team_logs.csv")
 
-    # Standardize column names if needed
-    if "TEAM" in player_logs.columns:
-        player_logs.rename(columns={"TEAM": "TEAM_NAME"}, inplace=True)
-    if "TEAM" in team_logs.columns:
-        team_logs.rename(columns={"TEAM": "TEAM_NAME"}, inplace=True)
-
     # Format date
     player_logs["GAME_DATE"] = pd.to_datetime(player_logs["GAME_DATE"])
     team_logs["GAME_DATE"] = pd.to_datetime(team_logs["GAME_DATE"])
 
-    # Create filters
-    data_type = st.selectbox("Select Data Type", ["Player", "Team"])
-    rolling_window = st.selectbox("Rolling Window (Games)", [5, 10, 20])
+    # Choose available team column dynamically
+    team_col = None
+    for col in ["TEAM_NAME", "TEAM_ABBREVIATION", "TEAM_ID"]:
+        if col in player_logs.columns:
+            team_col = col
+            break
 
-    if data_type == "Player":
-        available_teams = sorted(player_logs["TEAM_NAME"].dropna().unique())
-        selected_team = st.selectbox("Select Team", available_teams)
+    if team_col is None:
+        st.error("🛑 No recognizable team column found in player_logs.csv")
+    else:
+        # Create filters
+        data_type = st.selectbox("Select Data Type", ["Player", "Team"])
+        rolling_window = st.selectbox("Rolling Window (Games)", [5, 10, 20])
 
-        filtered_players = player_logs[player_logs["TEAM_NAME"] == selected_team]["PLAYER_NAME"].dropna().unique()
-        selected_player = st.selectbox("Select Player", sorted(filtered_players))
+        if data_type == "Player":
+            available_teams = sorted(player_logs[team_col].dropna().unique())
+            selected_team = st.selectbox("Select Team", available_teams)
 
-        filtered_logs = player_logs[(player_logs["PLAYER_NAME"] == selected_player) &
-                                    (player_logs["TEAM_NAME"] == selected_team)]
-        filtered_logs = filtered_logs.sort_values("GAME_DATE", ascending=False).head(rolling_window)
+            filtered_players = player_logs[player_logs[team_col] == selected_team]["PLAYER_NAME"].dropna().unique()
+            selected_player = st.selectbox("Select Player", sorted(filtered_players))
 
-        st.subheader(f"Last {rolling_window} Games for {selected_player}")
-        st.dataframe(filtered_logs[["GAME_DATE", "MATCHUP", "PTS", "REB", "AST", "PLUS_MINUS"]].reset_index(drop=True))
+            filtered_logs = player_logs[
+                (player_logs["PLAYER_NAME"] == selected_player)
+            ].sort_values("GAME_DATE", ascending=False).head(rolling_window)
 
-    elif data_type == "Team":
-        available_teams = sorted(team_logs["TEAM_NAME"].dropna().unique())
-        selected_team = st.selectbox("Select Team", available_teams)
+            st.subheader(f"Last {rolling_window} Games for {selected_player}")
+            st.dataframe(filtered_logs[["GAME_DATE", "MATCHUP", "PTS", "REB", "AST", "PLUS_MINUS"]].reset_index(drop=True))
 
-        filtered_logs = team_logs[team_logs["TEAM_NAME"] == selected_team]
-        filtered_logs = filtered_logs.sort_values("GAME_DATE", ascending=False).head(rolling_window)
+        else:
+            available_teams = sorted(team_logs["TEAM_NAME"].dropna().unique())
+            selected_team = st.selectbox("Select Team", available_teams)
 
-        st.subheader(f"Last {rolling_window} Games for {selected_team}")
-        st.dataframe(filtered_logs[["GAME_DATE", "MATCHUP", "PTS", "REB", "AST", "PLUS_MINUS"]].reset_index(drop=True))
+            filtered_logs = team_logs[
+                (team_logs["TEAM_NAME"] == selected_team)
+            ].sort_values("GAME_DATE", ascending=False).head(rolling_window)
+
+            st.subheader(f"Last {rolling_window} Games for {selected_team}")
+            st.dataframe(filtered_logs[["GAME_DATE", "MATCHUP", "PTS", "REB", "AST", "PLUS_MINUS"]].reset_index(drop=True))
+
 
 
 # --- AI Prompter ---
